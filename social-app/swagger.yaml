@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info: 
+  title: Social App
+  description: First social app
+  version: 1.0.1
+
+servers:
+  - url: http://localhost:5000/api/v1
+    description: Localhost version of my version
+  - url: http://localhost:5000/api/v1
+    description: This is dummy api , it doesn't work
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /instagram:
+    get: 
+      summary: returns username , followers and Follows
+      responses:
+        '200':
+          description: returns an object
+          content:
+            aplication/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  followers:
+                    type: string
+                  follows:
+                    type: string
+
+    post: 
+      summary: returns username , followers and Follows
+      responses:
+        '200':
+          description: returns an object
+          content:
+            aplication/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: string
+                  followers:
+                    type: string
+                  follows:
+                    type: string
+
+
+  /{id}:
+    get: 
+      summary: return the value which is in parameter
+      parameters:
+        - name: id
+          default: 5
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: returns an object
+          content:
+            aplication/json:
+              schema:
+                type: object
+                properties:
+                  params:
+                    type: string
+                 
